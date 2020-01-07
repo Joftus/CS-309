@@ -1,0 +1,179 @@
+<!doctype html>
+
+
+
+<html>
+<head>
+
+
+  <!--
+    <?xml version="1.0" encoding="UTF-8"?>
+	<WISPAccessGatewayParam xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://airborne.gogoinflight.com/static/xsd/WISPAccessGatewayParam.xsd">
+		<Proxy>
+			<MessageType>110</MessageType>
+			<NextURL>http://airborne.gogoinflight.com/abp/page/abpRoaming.do</NextURL>
+			<ResponseCode>200</ResponseCode>
+			<Delay>0</Delay>
+		</Proxy>
+	</WISPAccessGatewayParam>
+  -->
+
+<meta name="viewport" content="width=device-width, minimum-scale=1.0, maximum-scale=1.0;">
+<meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<link rel="stylesheet" href="/abp/captive/css/styles.css">
+<title>Connecting to Ground..</title>
+
+<script type="text/javascript">
+var secs
+var timerID = null
+var timerRunning = false
+var delay = 1000
+var AIRLINE = 'DAL';
+
+function InitializeTimer(){
+	secs = 120
+	StopTheClock()
+	StartTheTimer()
+}
+
+function StopTheClock(){
+	if(timerRunning)
+		clearTimeout(timerID)
+	timerRunning = false
+}
+
+function StartTheTimer(){
+	if (secs == 0){
+		StopTheClock()
+		window.location = "/abp/page/connecting.do?abpflg="+2;
+	} else {
+		self.status = secs
+		secs = secs - 1
+		timerRunning = true
+		timerID = self.setTimeout("StartTheTimer()", delay)
+	}
+}
+</script>
+</head>
+
+<body class="redirect">
+
+    <div id="redirect_CPA" style="display:none">
+      <div class="cpa__wrapper cpa-redirect__wrapper">
+          <img class="cpa__logo cpa-redirect__logo" src="/abp/captive/img/logo-cpa-green.png" alt="logo">
+          <div class="cpa-redirect__enjoy-your-connected">Enjoy your connected inflight experience.</div>
+          <div class="cpa-redirect__one-moment-please">One moment please…</div>
+          <svg class="cpa-redirect__loader" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="81"
+              height="81" viewBox="0 0 81 81">
+              <defs>
+                  <circle id="a" cx="37.5" cy="37.5" r="37.5" />
+              </defs>
+              <g fill="none" fill-rule="evenodd" transform="translate(3 3)">
+                  <mask id="b" fill="#fff">
+                      <use xlink:href="#a" />
+                  </mask>
+                  <rect width="30" height="16" x="23" y="-8" fill="#D8D8D8" mask="url(#b)" rx="5" />
+                  <circle cx="37.5" cy="37.5" r="39" stroke="#006564" stroke-width="3" />
+              </g>
+          </svg>
+          <div class="cpa-redirect__not-loading"> Not loading? </div>
+          <div onclick='javavscript:window.location.reload()' class="cpa-redirect__refresh">
+              <div class="cpa-redirect__refresh-text">
+                  Refresh
+              </div>
+              <svg xmlns="http://www.w3.org/2000/svg" width="26" height="32" viewBox="0 0 26 32">
+                  <path fill="#0F748F" fill-rule="nonzero" d="M13 2.753V0L7.907 3.619 13 7.221V4.416c5.001 0 9.413 3.337 10.867 8.218 1.453 4.88-.395 10.157-4.552 12.994l.9 1.368c4.764-3.234 6.887-9.271 5.225-14.856-1.663-5.586-6.717-9.4-12.44-9.387zm0 24.849c-5.008.003-9.428-3.34-10.878-8.23-1.45-4.889.41-10.17 4.58-13l-.917-1.368C1.02 8.238-1.102 14.275.56 19.86c1.663 5.586 6.717 9.4 12.44 9.387V32l5.093-3.602L13 24.78v2.823z"
+                  />
+              </svg>
+          </div>
+        </div>
+      </div>
+
+    <h2 id="logo">Gogo <span id="airlineLogo"></span></h2>
+    <div class="localeBlock" id="en_US">
+      <h3 class="message">Enjoy your connected inflight experience.</h3>
+      <p class="refresh">Not loading? <a class="refreshBtn" href="#">Refresh</a></p>
+    </div>
+
+    <div class="localeBlock" id="pt_BR">
+      <h3 class="message">Aproveite sua experiência conectada a bordo.</h3>
+      <p class="refresh">N&#227;o est&#225; carregando? <a class="refreshBtn" href="#">Atualizar</a></p>
+    </div>
+
+    <div class="localeBlock" id="ja_JP">
+      <h3 class="message">機内インターネットサービスをお楽しみください。</h3>
+      <p class="refresh">読み込まれない場合 <a class="refreshBtn" href="#">更新</a></p>
+    </div>
+
+	<div class="localeBlock" id="ko_KR">
+      <h3 class="message">기내 인터넷 연결 서비스를 즐기시길 바랍니다.</h3>
+      <p class="refresh">불러오기가 실패했습니까? <a class="refreshBtn" href="#">새로 고침</a></p>
+    </div>
+
+    <div class="localeBlock" id="zh_CN">
+      <h3 class="message">享受班機上的上網體驗。</h3>
+      <p class="refresh">沒有載入嗎？<a class="refreshBtn" href="#">重新整理</a></p>
+    </div>
+    
+    <div class="localeBlock" id="es_MX">
+      <h3 class="message">Disfruta de la conexi&#243;n en vuelo.</h3>
+      <p class="refresh">&#191;No se carga? <a class="refreshBtn" href="#">Actualizar</a></p>
+    </div>
+
+    <div class="localeBlock" id="fr_CA">
+      <h3 class="message">Profitez de votre exp&#233;rience de connexion &#224; bord.</h3>
+      <p class="refresh">Le t&#233;l&#233;chargement n&#8217;a pas lieu? <a class="refreshBtn" href="#">Rafra&#238;chir</a></p>
+    </div>
+
+    <div class="localeBlock" id="en_GB">
+      <h3 class="message">Enjoy your connected inflight experience.</h3>
+      <p class="refresh">Not loading? <a class="refreshBtn" href="#">Refresh</a></p>
+    </div>
+
+    <div class="localeBlock" id="es_ES">
+      <h3 class="message">Disfruta tu experiencia con la conexión durante el vuelo.</h3>
+      <p class="refresh">¿No se carga? <a class="refreshBtn" href="#">Actualizar</a></p>
+    </div>
+    <p class="loadingSVG">
+      <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 504 504" style="enable-background:new 0 0 504 504;" xml:space="preserve">
+      <g>
+        <path class="planePath" d="M207.4,275.9c-12.1,7.7-21.6,11.1-21.6,11.1c-0.4,0.2-0.9,0.1-1.1-0.3c-0.2-0.4-0.1-0.9,0.3-1.1
+          c0,0,7.6-6.9,20.3-13.5c0.4-0.2,1.6,1.2,1.9,1.6C207.3,274.1,207.8,275.7,207.4,275.9z"/>
+        <path class="planePath" d="M271,227.1L196.9,191c0,0-0.6-0.3-1.3,0.1c-0.3,0.2-10.1,5.8-10.4,6c-0.4,0.2-0.1,0.5-0.1,0.5l53.1,49.2
+          l7.6,13.1l16,70.6c0,0,0.1,0.4,0.5,0.2c0.3-0.1,10.1-5.8,10.4-6c0.7-0.4,0.7-1.1,0.7-1.1l5.8-82.2L271,227.1z"/>
+        <g>
+          <path class="planePath" d="M191.7,282.5l6.7,28c0,0,0,0.2,0.2,0.1c0.1-0.1,4-2.3,4.1-2.4c0.3-0.2,0.3-0.4,0.3-0.4l2.3-32.9"/>
+          <path class="planePath" d="M191.7,282.5l-20.9-19.9c0,0-0.1-0.1,0-0.2c0.1-0.1,4-2.3,4.1-2.4c0.3-0.2,0.5,0,0.5,0l29.6,14.4"/>
+        </g>
+        <path class="planePath" d="M321.7,221.3c9.9-7.1,13-16.7,11-20.3l0,0c0,0,0,0,0,0l0,0c-2.1-3.4-12-5.6-23.1-0.6
+          c-8.5,3.9-34.5,21-122.9,76.9c2.3,3.9,3.3,5.7,3.5,6c0,0,0,0,0,0c0.2,0.3,1.2,2,3.5,6C286.3,240.6,314.1,226.7,321.7,221.3z"/>
+      </g>
+      </svg>    
+    </p>
+ <script type="text/javascript" src="/abp/captive/scripts/abp.js"></script>
+<input id="abpflg" value="2" type="hidden">
+<noscript>
+	<meta http-equiv=REFRESH content="0;URL=/abp/page/connecting.do?abpflg=2">
+</noscript>
+<script type="text/javascript">
+window.onload = function() 
+{
+	var sessionSyncEnabled = false;
+	var sessionRecoveryDone = false;
+	//alert("sessionSyncEnabled : "+sessionSyncEnabled+" : "+ (sessionSyncEnabled == true));
+	//alert("sessionRecoveryDone : "+sessionRecoveryDone+" : "+ (sessionRecoveryDone == false));
+	if(sessionSyncEnabled == true && sessionRecoveryDone == false){
+		//alert("Reloading");
+		setTimeout(function(){
+		    location.reload();
+		}, 5000);
+	}else{
+		//alert("Redirecting");
+		setTimeout(function(){window.location.assign('/abp/page/connecting.do?abpflg=2');},0)	
+	}
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,76 @@
+package com.example.demo.userControler;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.model.Attendance;
+import com.example.demo.model.Class;
+import com.example.demo.model.User;
+import com.example.demo.repository.AttendanceRepository;
+import com.example.demo.repository.ClassRepository;
+import com.example.demo.repository.UserRepository;
+
+@RestController
+public class TeacherController {
+	
+	@Autowired
+	UserRepository userRepository;
+	
+	@Autowired
+	ClassRepository classRepository;
+	
+	@Autowired
+	AttendanceRepository attendanceRepository;
+	
+//-------------- Editing Variables -------------------------------------------------------------------------
+	
+	@PostMapping(path = "/teacher/post/create/class/{email}/{className}")
+	public @ResponseBody Class createClass(@PathVariable("email") String email, @PathVariable("className") String className) throws Exception {
+		if (userRepository.findByEmail(email).get().type != "teacher") throw new Exception("User does not have access to this feature");
+		return classRepository.save(new Class(className, userRepository.findByEmail(email).get()));
+	}
+	
+	@PostMapping(path = "/teacher/post/start/{email}/{classId}/{lat}/{lon}")
+	public @ResponseBody String startClass(@PathVariable("email") String email, @PathVariable("classId") Integer classId, @PathVariable("lat") float lat, @PathVariable("lon") float lon) {
+		User user = userRepository.findByEmail(email).get();
+		Class c = classRepository.findById(classId).get();
+		if (!user.type.equals("teacher") || !user.classes.contains(c)) return null;
+		c.lat = lat;
+		c.lon = lon;
+		c.active = true;
+		userRepository.save(user);
+		classRepository.save(c);
+		return "Class " + c.name + " has been started!";
+	}
+	
+	@PostMapping(path = "/teacher/post/stop/{email}/{classId}")
+	public @ResponseBody String stopClass(@PathVariable("email") String email, @PathVariable("classId") Integer classId) {
+		User user = userRepository.findByEmail(email).get();
+		Class c = classRepository.findById(classId).get();
+		if (!user.type.equals("teacher") || !user.classes.contains(c)) return null;
+		c.lat = 0;
+		c.lon = 0;
+		c.active = false;
+		userRepository.save(user);
+		classRepository.save(c);
+		return "Class " + c.name + " has been stopped!";
+	}
+	
+	@PostMapping(path = "/teacher/post/swap/{teacherEmail}/{studentEmail}/{classId}/{date}")
+	public @ResponseBody Attendance changeAttendance(@PathVariable("teacherEmail") String teacherEmail, @PathVariable("studentEmail") String studentEmail, @PathVariable("classId") Integer classId, @PathVariable("date") String date) {
+		User teacher = userRepository.findByEmail(teacherEmail).get();
+		User student = userRepository.findByEmail(studentEmail).get();
+		Class c = classRepository.findById(classId).get();
+		Attendance a = attendanceRepository.findByUserAndCAndDate(student, c, date).get();
+		if (!teacher.type.equals("teacher") || !student.type.equals("student") || !teacher.classes.contains(c) || !student.classes.contains(c)) return null;
+		if (a.present == false) a.present = true;
+		else a.present = false;
+		attendanceRepository.save(a);
+		userRepository.save(student);
+		classRepository.save(c);
+		return student.attendance.get(student.attendance.size() - 1);
+	}
+}

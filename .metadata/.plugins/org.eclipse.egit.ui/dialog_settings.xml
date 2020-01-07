@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<section name="Workbench">
+	<item value="2" key="org.eclipse.egit.ui.internal.clone.GitSelectWizardPageWizardSel"/>
+	<item value="/Users/joshloftus/git/petclinic-mysql/.git" key="GitSelectRepositoryPage.lastRepository"/>
+	<list key="EGit.KnownHosts">
+		<item value="bitbucket.org"/>
+		<item value="github.com"/>
+		<item value="git.eclipse.org"/>
+		<item value="git.linux.iastate.edu"/>
+	</list>
+	<list key="RepositorySelectionPage.UsedUris">
+		<item value="https://git.linux.iastate.edu/tghosh/petclinic-mysql.git"/>
+		<item value="https://git.linux.iastate.edu/CS309SPRING2019/team_26.git"/>
+	</list>
+	<section name="GitImportWizard">
+	</section>
+</section>

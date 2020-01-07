@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Copy 5 packages to &apos;Attendence_Combo/src/main/java&apos;&#x0A;- Original project: &apos;Attendence_1.1&apos;&#x0A;- Destination element: &apos;Attendence_Combo/src/main/java&apos;&#x0A;- Original elements:&#x0A;     Attendence_1.1/src/main/java/TeacherAssistant&#x0A;     Attendence_1.1/src/main/java/Attendence&#x0A;     Attendence_1.1/src/main/java/Teacher&#x0A;     Attendence_1.1/src/main/java/Admin&#x0A;     Attendence_1.1/src/main/java/Student" description="Copy packages" destination="=Attendence_Combo/src\/main\/java" element1="/src\/main\/java&lt;TeacherAssistant" element2="/src\/main\/java&lt;Attendence" element3="/src\/main\/java&lt;Teacher" element4="/src\/main\/java&lt;Admin" element5="/src\/main\/java&lt;Student" flags="589830" fragments="5" id="org.eclipse.jdt.ui.copy" policy="org.eclipse.jdt.ui.copyPackages" stamp="1549923216090" version="1.0"/>
+</session>

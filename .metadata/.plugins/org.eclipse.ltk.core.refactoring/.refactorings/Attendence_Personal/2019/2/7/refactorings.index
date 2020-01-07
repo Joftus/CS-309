@@ -1,0 +1,42 @@
+1549908943845	Move compilation unit
+1549908957723	Move compilation unit
+1549909764838	Rename package 'User'
+1549909788746	Rename package 'Teacher'
+1549909803630	Rename package 'TeacherAssistant'
+1549909815427	Rename package 'Attendence'
+1549909829352	Rename package 'Teacher_Old'
+1549909840745	Rename package 'OLD_Attendence'
+1549909853533	Rename package 'Admin'
+1549909867091	Rename package 'TeacherAssistant_Old'
+1549909879845	Rename package 'Student'
+1549909911856	Copy compilation units
+1549909925829	Copy compilation units
+1549909939240	Copy compilation units
+1549909950515	Copy compilation units
+1549916705596	Delete element
+1549916709658	Delete element
+1549916714072	Delete element
+1549916719094	Delete element
+1549916795800	Move compilation unit
+1549916799908	Move compilation unit
+1549916804196	Move compilation unit
+1549916849764	Move compilation unit
+1549916855479	Move compilation unit
+1549916870688	Move compilation unit
+1549916881170	Rename package 'Attendence.Class'
+1549916904400	Rename package 'Attendence.Student'
+1549916918800	Rename package 'Attendence.Admin'
+1549916929055	Rename package 'Attendence.Teacher'
+1549916940062	Rename package 'Attendence.TeacherAssistant'
+1549916948585	Rename package 'Attendence.User'
+1549916953782	Move compilation unit
+1549916958304	Move compilation unit
+1549916961482	Move compilation unit
+1549916967871	Move compilation unit
+1549916972813	Move compilation unit
+1549916977900	Move compilation units
+1549916990267	Move compilation units
+1549916996896	Move compilation units
+1549917001126	Delete element
+1549917783383	Rename package 'Attendence.Tables.Admin'
+1549917804770	Rename package 'Attendence.Tables.Class'

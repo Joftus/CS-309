@@ -1,0 +1,42 @@
+package com.example.demo.model;
+
+import java.util.List;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import org.springframework.core.style.ToStringCreator;
+
+@Entity
+public class School {
+
+// ---------- Variables ----------
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	public Integer id;
+	public String name;
+	
+	@OneToMany
+	public List<Class> c;
+	
+		
+
+// ---------- Constructors ----------
+	public School() {this.c = null;}
+	public School(String name) {super(); this.name = name;}
+
+	
+	
+// ---------- To String ----------
+	@Override
+    public String toString() {
+        return new ToStringCreator(this)
+                .append("ID", this.id)
+                .append("Name", this.name)
+                .append("Classes", this.c)
+                .toString();
+	}
+}
